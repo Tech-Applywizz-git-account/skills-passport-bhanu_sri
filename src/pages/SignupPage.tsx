@@ -458,7 +458,7 @@
 
 //src/pages/SignupPage.tsx
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { redirect, useNavigate } from "react-router-dom";
 import supabase from '../utils/supabase';
 import LoginModal from './LoginModal'; // Import LoginModal component
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
@@ -480,7 +480,7 @@ const SignupPage: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
   const [isLoginModalOpen, setIsLoginModalOpen] = useState(false); // State for login modal visibility
   const [showDialog, setShowDialog] = useState(false); // New state
-const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
@@ -488,48 +488,33 @@ const [showPassword, setShowPassword] = useState(false);
     setForm((prev) => ({ ...prev, [name]: value }));
   };
 
- const handleSubmit = async (e: React.FormEvent) => {
-  e.preventDefault();
-  setError(null);
-  setLoading(true);
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    setLoading(true);
 
-  try {
-    // 1️⃣ Create user in Supabase Auth
-    const { data: userData, error: authError } = await supabase.auth.signUp({
-      email: form.email,
-      password: form.password,
-    });
+    try {
+      const { error: leadsError } = await supabase
+        .from('naga_leads')
+        .insert([
+          {
+            full_name: form.fullName,
+            email: form.email,
+            phone: form.phone,
+            country_code: form.countryCode,
+          }
+        ]);
 
-    if (authError) throw authError;
+      if (leadsError) throw leadsError;
+      // setTimeout(() => setShowDialog(false), 3000);
+      window.location.href = "https://www.paypal.com/ncp/payment/CF9PDNMVQANT4";
 
-    // 2️⃣ Insert user profile data into public.leads
-    const { error: leadsError } = await supabase
-      .from('leads')
-      .insert([
-        {
-          full_name: form.fullName,
-          email: form.email,
-          phone: form.phone,
-          country_code: form.countryCode,
-          promo_code: form.promoCode,
-        }
-      ]);
-
-    if (leadsError) throw leadsError;
-
-    // 3️⃣ Show dialog
-    setShowDialog(true);
-    // setTimeout(() => setShowDialog(false), 3000);
-
-    // Optional: navigate to OTP or dashboard
-    // navigate("/verify-otp");
-
-  } catch (err: any) {
-    setError(err.message || "Something went wrong. Try again.");
-  } finally {
-    setLoading(false);
-  }
-};
+    } catch (err: any) {
+      setError(err.message || "Something went wrong. Try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
 
   const handleLoginClick = () => {
@@ -673,35 +658,35 @@ const [showPassword, setShowPassword] = useState(false);
                 />
               </div> */}
 
-              <div className="space-y-2 relative">
-  <label
-    htmlFor="password"
-    className="text-sm font-medium text-gray-700"
-  >
-    Password
-  </label>
-  <input
-    id="password"
-    name="password"
-    type={showPassword ? "text" : "password"}
-    value={form.password}
-    onChange={handleChange}
-    placeholder="Enter your password"
-    required
-    className="w-full rounded-xl border border-transparent bg-indigo-50/60 px-4 py-3 text-gray-900 placeholder-gray-400 outline-none ring-1 ring-indigo-100 focus:ring-2 focus:ring-indigo-300 pr-10"
-  />
-  <button
-    type="button"
-    onClick={() => setShowPassword((prev) => !prev)}
-    className="absolute right-3 top-[38px] text-gray-500 hover:text-gray-700"
-  >
-    {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
-  </button>
-</div>
+              {/* <div className="space-y-2 relative">
+                <label
+                  htmlFor="password"
+                  className="text-sm font-medium text-gray-700"
+                >
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  value={form.password}
+                  onChange={handleChange}
+                  placeholder="Enter your password"
+                  required
+                  className="w-full rounded-xl border border-transparent bg-indigo-50/60 px-4 py-3 text-gray-900 placeholder-gray-400 outline-none ring-1 ring-indigo-100 focus:ring-2 focus:ring-indigo-300 pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute right-3 top-[38px] text-gray-500 hover:text-gray-700"
+                >
+                  {showPassword ? <AiFillEyeInvisible size={20} /> : <AiFillEye size={20} />}
+                </button>
+              </div> */}
 
 
               {/* Promo Code */}
-              <div className="space-y-2">
+              {/* <div className="space-y-2">
                 <label
                   htmlFor="promoCode"
                   className="text-sm font-medium text-gray-700"
@@ -717,15 +702,15 @@ const [showPassword, setShowPassword] = useState(false);
                   placeholder="Enter promo code (optional)"
                   className="w-full rounded-xl border border-transparent bg-indigo-50/60 px-4 py-3 text-gray-900 placeholder-gray-400 outline-none ring-1 ring-indigo-100 focus:ring-2 focus:ring-indigo-300"
                 />
-              </div>
+              </div> */}
 
               {/* Info Note */}
-              <p className="rounded-xl bg-purple-50 px-4 py-3 text-sm text-purple-600">
+              {/* <p className="rounded-xl bg-purple-50 px-4 py-3 text-sm text-purple-600">
                 You&apos;ll receive an confirmation email to verify your account.
-              </p>
+              </p> */}
 
               {/* Error */}
-              {error && <p className="text-sm text-red-600">{error}</p>}
+              {/* {error && <p className="text-sm text-red-600">{error}</p>} */}
 
               {/* Verify Button */}
               <button
@@ -733,11 +718,11 @@ const [showPassword, setShowPassword] = useState(false);
                 disabled={loading}
                 className="w-full rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 px-6 py-3 text-lg font-semibold text-white shadow-lg hover:scale-[1.01] transition-transform focus:ring-4 focus:ring-blue-300 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                {loading ? "Sending, please check your inbox..." : "Send email"}
+                {loading ? "Opening payment page..." : "Proceed to Payment"}
               </button>
 
               {/* Footer */}
-              <p className="text-center text-sm text-gray-600">
+              {/* <p className="text-center text-sm text-gray-600">
                 Already have an account?{" "}
                 <button
                   type="button"
@@ -746,30 +731,30 @@ const [showPassword, setShowPassword] = useState(false);
                 >
                   Login
                 </button>
-              </p>
+              </p> */}
             </form>
           </div>
         </div>
       </div>
 
       {/* Verification Dialog */}
-{showDialog && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30 ">
-    <div className="rounded-xl bg-white p-6 shadow-lg max-w-lg text-center">
-      <h2 className="text-lg font-semibold text-gray-900">Verification Email Sent</h2>
-      <p className="mt-2 text-sm text-gray-600">
-        A confirmation email has been sent to <span className="font-medium">{form.email}</span>.
-        Please check your inbox to verify your account.
-      </p>
-      <button
-        onClick={() => setShowDialog(false)}
-        className="mt-4 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-300"
-      >
-        OK
-      </button>
-    </div>
-  </div>
-)}
+      {showDialog && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-30 ">
+          <div className="rounded-xl bg-white p-6 shadow-lg max-w-lg text-center">
+            <h2 className="text-lg font-semibold text-gray-900">Verification Email Sent</h2>
+            <p className="mt-2 text-sm text-gray-600">
+              A confirmation email has been sent to <span className="font-medium">{form.email}</span>.
+              Please check your inbox to verify your account.
+            </p>
+            <button
+              onClick={() => setShowDialog(false)}
+              className="mt-4 rounded-md bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 focus:ring-2 focus:ring-blue-300"
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
 
 
       {/* Login Modal */}

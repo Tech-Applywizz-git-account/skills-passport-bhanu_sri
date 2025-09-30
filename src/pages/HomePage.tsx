@@ -17,7 +17,7 @@ import {
   EyeOff,
   MessageCircle,
 } from "lucide-react";
-import { motion,  Variant, AnimatePresence } from "framer-motion";
+import { motion, Variant, AnimatePresence } from "framer-motion";
 import { div } from "framer-motion/client";
 
 
@@ -45,15 +45,15 @@ const mobileMenuVariants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.25,ease: "easeInOut" },
+    transition: { duration: 0.25, ease: "easeInOut" },
   },
   exit: { opacity: 0, y: -8, transition: { duration: 0.2, ease: "easeIn" } },
 };
 
 // ---------- Login Modal Component ----------
-const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({ 
-  isOpen, 
-  onClose 
+const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
+  isOpen,
+  onClose
 }) => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("kishore@Applywizz.com");
@@ -66,7 +66,7 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
     e.preventDefault();
     setError(null);
     setLoading(true);
-    
+
     try {
       await new Promise((resolve) => setTimeout(resolve, 700));
       navigate("/dashboard");
@@ -83,7 +83,7 @@ const LoginModal: React.FC<{ isOpen: boolean; onClose: () => void }> = ({
     <div className="fixed inset-0 z-50 overflow-y-auto">
       <div className="flex min-h-full items-center justify-center p-4">
         <div className="fixed inset-0 bg-black/30" onClick={onClose}></div>
-        
+
         <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
           <button
             onClick={onClose}
@@ -213,7 +213,7 @@ const HomePage: React.FC = () => {
   ];
 
   const galleryImages = [
-"/LOGO_AQUENT_images-removebg-preview.png",
+    "/LOGO_AQUENT_images-removebg-preview.png",
     "/_Covetrus_Logo_rgb-TM_2020 1.png",
     // "/DIGITAL OCEAN.png",
     "/hackajob.png",
@@ -252,7 +252,7 @@ const HomePage: React.FC = () => {
   };
 
 
-   const handleH1B = (option: string) => {
+  const handleH1B = (option: string) => {
     if (option === "H1B") {
       window.location.href = "/H1B";
     } else {
@@ -263,21 +263,21 @@ const HomePage: React.FC = () => {
 
   const handlejobready = (option: string) => {
     if (option === "JobReady") {
-      window.location.href ="/JobReady";
+      window.location.href = "/JobReady";
     } else {
       console.log("Handle:", option);
     }
     setOpen(false);
   };
- const handlepublications = (option: string) => {
+  const handlepublications = (option: string) => {
     if (option === "Publications") {
-      window.location.href ="/Publications";
+      window.location.href = "/Publications";
     } else {
       console.log("Handle:", option);
     }
     setOpen(false);
   };
-  
+
   const handleLoginClick = () => {
     setMobileOpen(false);
     setIsLoginModalOpen(true);
@@ -287,14 +287,14 @@ const HomePage: React.FC = () => {
 
   useEffect(() => {
     if (!isAutoPlaying) return;
-    
+
     const interval = setInterval(() => {
       setCurrentTestimonial((prev) => {
         const nextIndex = prev + 1;
         return nextIndex >= testimonials.length * 3 ? 0 : nextIndex;
       });
     }, 4000);
-    
+
     return () => clearInterval(interval);
   }, [isAutoPlaying, testimonials.length]);
 
@@ -324,7 +324,7 @@ const HomePage: React.FC = () => {
     <div className="min-h-screen bg-white">
       <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
 
-        {/* WhatsApp Floating Button */}
+      {/* WhatsApp Floating Button */}
       {/* <motion.a
         href="https://wa.me/917997719874"
         target="_blank"
@@ -342,7 +342,7 @@ const HomePage: React.FC = () => {
 
 
 
-{/* <motion.a
+      {/* <motion.a
     href="https://wa.me/917997719874"
     target="_blank"
     rel="noopener noreferrer"
@@ -354,7 +354,7 @@ const HomePage: React.FC = () => {
     transition={{ duration: 0.3 }}
 >
     {/* Replace with your image */}
-    {/* <img 
+      {/* <img 
         src="public/whatsapplogo.png" 
         alt="WhatsApp Chat" 
         className="w-8 h-8 object-contain"
@@ -363,23 +363,23 @@ const HomePage: React.FC = () => {
 
 
 
-<motion.a
-    href="https://wa.me/917997719874"
-    target="_blank"
-    rel="noopener noreferrer"
-    className="fixed bottom-6 right-6 z-40 bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-green-700"
-    whileHover={{ scale: 1.1 }}
-    whileTap={{ scale: 0.9 }}
-    initial={{ opacity: 0, scale: 0.8 }}
-    animate={{ opacity: 1, scale: 1 }}
-    transition={{ duration: 0.3 }}
->
-    <img 
-        src="public/whatsapplogo.png" 
-        alt="WhatsApp Chat" 
-        className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]"
-    />
-</motion.a>
+      <motion.a
+        href="https://wa.me/917997719874"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-40 bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-green-700"
+        whileHover={{ scale: 1.1 }}
+        whileTap={{ scale: 0.9 }}
+        initial={{ opacity: 0, scale: 0.8 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.3 }}
+      >
+        <img
+          src="public/whatsapplogo.png"
+          alt="WhatsApp Chat"
+          className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]"
+        />
+      </motion.a>
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
         <div className="relative">
@@ -398,12 +398,12 @@ const HomePage: React.FC = () => {
                   <Crown className="w-5 h-5 text-white" />
                 </div> */}
                 <div className="w-8 h-8  rounded-lg flex items-center justify-center">
-  <img
-    src="/public/skill.passsport1.png"   // 🔹 replace with your image path
-    alt="icon"
-    className="w-16 h-16 object-contain"
-  />
-</div>
+                  <img
+                    src="/public/skill.passsport1.png"   // 🔹 replace with your image path
+                    alt="icon"
+                    className="w-16 h-16 object-contain"
+                  />
+                </div>
 
                 <span className="text-2xl font-bold text-black">Skills Passport</span>
               </motion.div>
@@ -441,7 +441,7 @@ const HomePage: React.FC = () => {
                 >
                   Testimonial
                 </button>
-                    <button
+                <button
                   onClick={() => scrollToSection("contact")}
                   className="text-gray-600 hover:text-black transition-colors"
                 >
@@ -510,7 +510,6 @@ const HomePage: React.FC = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 custom={2}
                 // variants={slideUp}
-                onClick={handleLoginClick}
                 className="hidden md:inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
               >
                 <LogIn className="w-5 h-5" />
@@ -567,7 +566,7 @@ const HomePage: React.FC = () => {
                     onClick={() => scrollToSection("contact")}
                     className="w-full text-left py-2 text-gray-700 hover:text-black"
                   >
-                  Contact
+                    Contact
                   </button>
 
                   {/* Mobile Products Dropdown */}
@@ -613,7 +612,7 @@ const HomePage: React.FC = () => {
                       </div>
                     )}
                   </div> */}
-{/* 
+                  {/* 
                   <button
                     onClick={handleLoginClick}
                     className="w-full text-left py-2 text-gray-700 hover:text-black"
@@ -621,16 +620,15 @@ const HomePage: React.FC = () => {
                     Login
                   </button> */}
                   <motion.button
-  initial="hidden"
-  whileInView="visible"
-  viewport={{ once: true, amount: 0.2 }}
-  custom={2}
-  onClick={handleLoginClick}
-  className="w-full flex items-center justify-center gap-2 text-center bg-blue-700 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:text-black"
->
-  <LogIn className="w-5 h-5" />
-  Login
-</motion.button>
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    custom={2}
+                    className="w-full flex items-center justify-center gap-2 text-center bg-blue-700 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:text-black"
+                  >
+                    <LogIn className="w-5 h-5" />
+                    Login
+                  </motion.button>
                 </nav>
               </motion.div>
             )}
@@ -720,20 +718,20 @@ const HomePage: React.FC = () => {
                   className="absolute bottom-4 right-4 bg-white rounded-full px-4 py-2 shadow-lg flex items-center gap-2"
                 >
                   <div className="flex -space-x-2">
-                    <img 
-                      src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=32&h=32&fit=crop&crop=face" 
-                      alt="User 1" 
-                      className="w-8 h-8 rounded-full border-2 border-white" 
+                    <img
+                      src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=32&h=32&fit=crop&crop=face"
+                      alt="User 1"
+                      className="w-8 h-8 rounded-full border-2 border-white"
                     />
-                    <img 
-                      src="https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=32&h=32&fit=crop&crop=face" 
-                      alt="User 2" 
-                      className="w-8 h-8 rounded-full border-2 border-white" 
+                    <img
+                      src="https://images.pexels.com/photos/3764013/pexels-photo-3764013.jpeg?auto=compress&cs=tinysrgb&w=32&h=32&fit=crop&crop=face"
+                      alt="User 2"
+                      className="w-8 h-8 rounded-full border-2 border-white"
                     />
-                    <img 
-                      src="https://images.pexels.com/photos/2586823/pexels-photo-2586823.jpeg?auto=compress&cs=tinysrgb&w=32&h=32&fit=crop&crop=face" 
-                      alt="User 3" 
-                      className="w-8 h-8 rounded-full border-2 border-white" 
+                    <img
+                      src="https://images.pexels.com/photos/2586823/pexels-photo-2586823.jpeg?auto=compress&cs=tinysrgb&w=32&h=32&fit=crop&crop=face"
+                      alt="User 3"
+                      className="w-8 h-8 rounded-full border-2 border-white"
                     />
                   </div>
                   <span className="text-sm text-gray-600">10K+ Active users</span>
@@ -1113,9 +1111,8 @@ const HomePage: React.FC = () => {
                       setCurrentTestimonial(idx);
                       setIsAutoPlaying(false);
                     }}
-                    className={`w-2 h-2 rounded-full transition-all ${
-                      visibleIndex === idx ? "bg-blue-700 w-6" : "bg-gray-300"
-                    }`}
+                    className={`w-2 h-2 rounded-full transition-all ${visibleIndex === idx ? "bg-blue-700 w-6" : "bg-gray-300"
+                      }`}
                   />
                 ))}
               </div>
@@ -1123,7 +1120,7 @@ const HomePage: React.FC = () => {
           </div>
         </div>
       </section>
-            {/* ========== 6) CONTACT ========== */}
+      {/* ========== 6) CONTACT ========== */}
       <section id="contact" className="py-20 bg-white border-t border-gray-100">
         <div className="container mx-auto px-6">
           <motion.div
@@ -1149,27 +1146,27 @@ const HomePage: React.FC = () => {
 
 
 
-               <a
-  href="https://wa.me/917997719874"
-  target="_blank"
-  rel="noopener noreferrer"
-  className="inline-flex items-center gap-3 rounded-full bg-green-600 px-8 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
->
-  <img 
-    src="public/whatsapplogo.png" 
-    alt="WhatsApp" 
-    className="w-8 h-8"
-  />
-  WhatsApp
-</a>
+              <a
+                href="https://wa.me/917997719874"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-3 rounded-full bg-green-600 px-8 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
+              >
+                <img
+                  src="public/whatsapplogo.png"
+                  alt="WhatsApp"
+                  className="w-8 h-8"
+                />
+                WhatsApp
+              </a>
             </div>
           </motion.div>
         </div>
       </section>
     </div>
 
-    
-    
+
+
   );
 };
 
@@ -1520,20 +1517,20 @@ export default HomePage;
 //     <div className="min-h-screen bg-white">
 //       <LoginModal isOpen={isLoginModalOpen} onClose={() => setIsLoginModalOpen(false)} />
 
-      // {/* WhatsApp Floating Button */}
-      // <motion.a
-      //   href="https://wa.me/917997719874"
-      //   target="_blank"
-      //   rel="noopener noreferrer"
-      //   className="fixed bottom-6 right-6 z-40 bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-green-700"
-      //   whileHover={{ scale: 1.1 }}
-      //   whileTap={{ scale: 0.9 }}
-      //   initial={{ opacity: 0, scale: 0.8 }}
-      //   animate={{ opacity: 1, scale: 1 }}
-      //   transition={{ duration: 0.3 }}
-      // >
-      //   <MessageCircle className="w-6 h-6" />
-      // </motion.a>
+// {/* WhatsApp Floating Button */}
+// <motion.a
+//   href="https://wa.me/917997719874"
+//   target="_blank"
+//   rel="noopener noreferrer"
+//   className="fixed bottom-6 right-6 z-40 bg-green-600 text-white p-4 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:bg-green-700"
+//   whileHover={{ scale: 1.1 }}
+//   whileTap={{ scale: 0.9 }}
+//   initial={{ opacity: 0, scale: 0.8 }}
+//   animate={{ opacity: 1, scale: 1 }}
+//   transition={{ duration: 0.3 }}
+// >
+//   <MessageCircle className="w-6 h-6" />
+// </motion.a>
 
 //       {/* Header */}
 //       <header className="fixed top-0 left-0 right-0 bg-white/95 backdrop-blur-sm border-b border-gray-100 z-50">
@@ -1768,7 +1765,7 @@ export default HomePage;
 //                       </div>
 //                     )}
 //                   </div> */}
-//                   {/* 
+//                   {/*
 //                   <button
 //                     onClick={handleLoginClick}
 //                     className="w-full text-left py-2 text-gray-700 hover:text-black"
@@ -2308,9 +2305,9 @@ export default HomePage;
 //   rel="noopener noreferrer"
 //   className="inline-flex items-center gap-3 rounded-full bg-green-600 px-8 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
 // >
-//   <img 
-//     src="public/whatsapplogo.png" 
-//     alt="WhatsApp" 
+//   <img
+//     src="public/whatsapplogo.png"
+//     alt="WhatsApp"
 //     className="w-5 h-5"
 //   />
 //   WhatsApp
