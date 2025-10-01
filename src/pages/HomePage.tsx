@@ -375,7 +375,7 @@ const HomePage: React.FC = () => {
         transition={{ duration: 0.3 }}
       >
         <img
-          src="public/whatsapplogo.png"
+          src="https://cdn.discordapp.com/attachments/1422858633720365161/1422859925838626896/whatsapplogo.png?ex=68de3511&is=68dce391&hm=3e5d8c6bc130d0ac73eb2512ca4bf73aa29c5f37ebd2d30c5e94bbe44a476bca&"
           alt="WhatsApp Chat"
           className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]"
         />
@@ -399,7 +399,7 @@ const HomePage: React.FC = () => {
                 </div> */}
                 <div className="w-8 h-8  rounded-lg flex items-center justify-center">
                   <img
-                    src="/public/skill.passsport1.png"   // 🔹 replace with your image path
+                    src="https://cdn.discordapp.com/attachments/1422858633720365161/1422859819856953344/skill.passsport1.png?ex=68de34f8&is=68dce378&hm=758486780be1b22acc561d4774f578337eac86fbd2738d958890d7829fdf7433&"   // 🔹 replace with your image path
                     alt="icon"
                     className="w-16 h-16 object-contain"
                   />
@@ -1153,7 +1153,7 @@ const HomePage: React.FC = () => {
                 className="inline-flex items-center gap-3 rounded-full bg-green-600 px-8 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
               >
                 <img
-                  src="public/whatsapplogo.png"
+                  src="https://cdn.discordapp.com/attachments/1422858633720365161/1422859925838626896/whatsapplogo.png?ex=68de3511&is=68dce391&hm=3e5d8c6bc130d0ac73eb2512ca4bf73aa29c5f37ebd2d30c5e94bbe44a476bca&"
                   alt="WhatsApp"
                   className="w-8 h-8"
                 />
