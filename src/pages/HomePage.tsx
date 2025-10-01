@@ -696,7 +696,7 @@ const HomePage: React.FC = () => {
             >
               <div className="relative">
                 <img
-                  src="/public/image_for_project naga.avif"
+                  src="/public/image_for_project.png"
                   alt="Professional using laptop"
                   className="w-full max-w-lg mx-auto h-auto object-cover rounded-lg"
                 />
