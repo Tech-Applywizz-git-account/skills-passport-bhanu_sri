@@ -696,7 +696,7 @@ const HomePage: React.FC = () => {
             >
               <div className="relative">
                 <img
-                  src="/public/image_for_project.png"
+                  src="https://cdn.discordapp.com/attachments/1422858633720365161/1422859012491313232/image_for_project.png?ex=68de3438&is=68dce2b8&hm=65391c3e066da8aa1628317babf7e8dd5f9628b507b22a7ed9af0354af0ac949&"
                   alt="Professional using laptop"
                   className="w-full max-w-lg mx-auto h-auto object-cover rounded-lg"
                 />
