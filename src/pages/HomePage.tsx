@@ -375,7 +375,7 @@ const HomePage: React.FC = () => {
         transition={{ duration: 0.3 }}
       >
         <img
-          src="https://cdn.discordapp.com/attachments/1422858633720365161/1422859925838626896/whatsapplogo.png?ex=68de3511&is=68dce391&hm=3e5d8c6bc130d0ac73eb2512ca4bf73aa29c5f37ebd2d30c5e94bbe44a476bca&"
+          src="/whatsapplogo.png"
           alt="WhatsApp Chat"
           className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(34,197,94,0.8)]"
         />
@@ -399,13 +399,13 @@ const HomePage: React.FC = () => {
                 </div> */}
                 <div className="w-8 h-8  rounded-lg flex items-center justify-center">
                   <img
-                    src="https://cdn.discordapp.com/attachments/1422858633720365161/1422859819856953344/skill.passsport1.png?ex=68de34f8&is=68dce378&hm=758486780be1b22acc561d4774f578337eac86fbd2738d958890d7829fdf7433&"   // 🔹 replace with your image path
+                    src="/skill.passsport1.png"
                     alt="icon"
                     className="w-16 h-16 object-contain"
                   />
                 </div>
 
-                <span className="text-2xl font-bold text-black">Skills Passport</span>
+                <span className="text-2xl font-bold text-black">Skill Passport</span>
               </motion.div>
 
               {/* Desktop Navigation */}
@@ -510,6 +510,7 @@ const HomePage: React.FC = () => {
                 viewport={{ once: true, amount: 0.2 }}
                 custom={2}
                 // variants={slideUp}
+                onClick={() => window.location.href = "https://sponsored-jobs-one.vercel.app/"}
                 className="hidden md:inline-flex items-center gap-2 bg-blue-700 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300"
               >
                 <LogIn className="w-5 h-5" />
@@ -624,6 +625,7 @@ const HomePage: React.FC = () => {
                     whileInView="visible"
                     viewport={{ once: true, amount: 0.2 }}
                     custom={2}
+                    onClick={() => window.location.href = "https://sponsored-jobs-one.vercel.app/"}
                     className="w-full flex items-center justify-center gap-2 text-center bg-blue-700 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transition-all duration-300 hover:text-black"
                   >
                     <LogIn className="w-5 h-5" />
@@ -696,7 +698,7 @@ const HomePage: React.FC = () => {
             >
               <div className="relative">
                 <img
-                  src="https://cdn.discordapp.com/attachments/1422858633720365161/1422859012491313232/image_for_project.png?ex=68de3438&is=68dce2b8&hm=65391c3e066da8aa1628317babf7e8dd5f9628b507b22a7ed9af0354af0ac949&"
+                  src="/image_for_project.png"
                   alt="Professional using laptop"
                   className="w-full max-w-lg mx-auto h-auto object-cover rounded-lg"
                 />
@@ -1153,7 +1155,7 @@ const HomePage: React.FC = () => {
                 className="inline-flex items-center gap-3 rounded-full bg-green-600 px-8 py-3 font-semibold text-white shadow-lg transition-colors hover:bg-green-700 focus:outline-none focus:ring-4 focus:ring-green-300"
               >
                 <img
-                  src="https://cdn.discordapp.com/attachments/1422858633720365161/1422859925838626896/whatsapplogo.png?ex=68de3511&is=68dce391&hm=3e5d8c6bc130d0ac73eb2512ca4bf73aa29c5f37ebd2d30c5e94bbe44a476bca&"
+                  src="/whatsapplogo.png"
                   alt="WhatsApp"
                   className="w-8 h-8"
                 />
